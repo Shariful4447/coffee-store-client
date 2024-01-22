@@ -8,16 +8,18 @@ function App() {
   
 
   return (
-    <>
+    <div className="m-20">
 
       <h1 className="text-2xl">Coffee making client : {coffees.length}</h1>
 
-      {
-        coffees.map(coffee => <Coffee key={coffee._id} coffee={coffee}></Coffee>)
-      }
+      <div className="grid md:grid-cols-2 gap-4">
+        {
+          coffees.map(coffee => <Coffee key={coffee._id} coffee={coffee}></Coffee>)
+        }
+      </div>
       
 
-    </>
+    </div>
   )
 }
 
