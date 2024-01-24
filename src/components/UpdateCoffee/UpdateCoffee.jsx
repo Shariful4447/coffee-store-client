@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 
 
@@ -19,6 +20,28 @@ const UpdateCoffee = () => {
         const image =form.image.value;
         const updateCoffee = {name, quatity, supplier, taste, category, details, image}
         console.log(updateCoffee);
+
+        //send data to the server
+        fetch (`http://localhost:3000/coffee/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateCoffee)
+        })
+        .then(res => res.json())
+        .then(data =>{
+            console.log(data);
+            if(data.modifiedCount > 0){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'user Updated SuccessFully',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                  })
+            }
+        })
+    }
 
     
     return (
@@ -96,5 +119,6 @@ const UpdateCoffee = () => {
         </div>
     );
 };
+
 
 export default UpdateCoffee;
