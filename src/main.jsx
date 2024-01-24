@@ -32,8 +32,9 @@ import UpdateCoffee from './components/UpdateCoffee/UpdateCoffee.jsx'
     element: <AddCoffee/>,
   },
   {
-    path: "update",
+    path: "updateCoffee/:id",
     element: <UpdateCoffee/>,
+    loader : ({params}) =>fetch(`http://localhost:3000/coffee/${params.id}`)
   },
   
  ]);

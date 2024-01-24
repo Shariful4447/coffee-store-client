@@ -3,6 +3,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import PreviewIcon from '@mui/icons-material/Preview';
 import EditIcon from '@mui/icons-material/Edit';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 const Coffee = ({coffee}) => {
     const {_id, name, quatity, supplier, taste, category, details, image} = coffee;
 
@@ -56,7 +57,9 @@ const Coffee = ({coffee}) => {
                     <div className="card-actions justify-end">
                         <div className="join join-vertical space-y-4 p-4 mt-4 ">
                             <button className="btn join-item"><PreviewIcon></PreviewIcon></button>
+                            <Link to ={`updateCoffee/${_id}`}>
                             <button className="btn join-item"><EditIcon></EditIcon></button>
+                            </Link>
                             <button 
                             onClick={() =>handleDelete(_id)}
                              className="btn join-item bg-orange-500"><DeleteIcon></DeleteIcon></button>
