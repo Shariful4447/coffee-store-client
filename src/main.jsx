@@ -12,6 +12,7 @@ import {
  } from "react-router-dom";
 import UpdateCoffee from './components/UpdateCoffee/UpdateCoffee.jsx'
 import Login from './components/Login/Login.jsx'
+import SignUp from './components/SignUp/SignUp.jsx'
 
  const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ import Login from './components/Login/Login.jsx'
   {
     path: "login",
     element: <Login/>,
+  },
+  {
+    path: "signup",
+    element: <SignUp></SignUp>,
   },
   {
     path: "data",
