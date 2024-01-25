@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import AddCoffee from './components/AddCoffee/AddCoffee.jsx'
+import DataTable from './components/dataTable/DataTable.jsx'
 
 
 import {
@@ -31,6 +32,12 @@ import UpdateCoffee from './components/UpdateCoffee/UpdateCoffee.jsx'
     path: "addCoffee",
     element: <AddCoffee/>,
   },
+  {
+    path: "data",
+    element: <DataTable></DataTable>,
+    
+  },
+
   {
     path: "updateCoffee/:id",
     element: <UpdateCoffee/>,
