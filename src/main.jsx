@@ -11,6 +11,7 @@ import {
   RouterProvider,
  } from "react-router-dom";
 import UpdateCoffee from './components/UpdateCoffee/UpdateCoffee.jsx'
+import Login from './components/Login/Login.jsx'
 
  const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ import UpdateCoffee from './components/UpdateCoffee/UpdateCoffee.jsx'
   {
     path: "addCoffee",
     element: <AddCoffee/>,
+  },
+  {
+    path: "login",
+    element: <Login/>,
   },
   {
     path: "data",
