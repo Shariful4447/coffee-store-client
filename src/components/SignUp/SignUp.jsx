@@ -22,13 +22,30 @@ const SignUp = () => {
         createUser(email, password)
         .then(result =>{
             console.log(result.user);
-            if(result.success){
-                Swal.fire(
-                            "Success!",
-                            "User Created Success",
-                            "success"
-                     )
-            }
+
+            const user = {fullName, email, password}
+            fetch('http://localhost:3000/user', {
+                method: 'POST',
+                headers: {
+                    'content-type' : 'application/json',
+                },
+                body: JSON.stringify(user)
+            })
+            .then(res =>res.json())
+            .then(data => {
+                console.log(data);
+                 if(data.insertedId){
+                    Swal.fire(
+                        "Success!",
+                        "User Created Success",
+                        "success"
+                 )
+    
+                }
+            })
+            
+                
+            
 
         })
         .catch(error =>{

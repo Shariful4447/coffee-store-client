@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import AuthProviders from "../Providers/AuthProviders";
+import { AuthContext } from "../Providers/AuthProviders";
+import Swal from "sweetalert2";
 
 
 
 const Login = () => {
-    const {signIn} = useContext(AuthProviders)
+    const {signIn} = useContext(AuthContext)
     
     const location = useLocation();
     const navigate = useNavigate();
@@ -18,6 +19,11 @@ const Login = () => {
         signIn(email, password)
             .then(result =>{
                 console.log(result);
+                Swal.fire(
+                    "Success!",
+                    "User Created Success",
+                    "success"
+             )
                 //navigate after login
                 navigate(location?.state ? location.state : '/')
             })
