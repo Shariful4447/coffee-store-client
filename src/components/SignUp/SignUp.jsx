@@ -1,12 +1,15 @@
 
 
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProviders";
+import Swal from "sweetalert2";
 
-// import { AuthContext } from "../Providers/Authproviders";
-// import { useContext } from "react";
+
 const SignUp = () => {
     
-        // const {createUser} = useContext(AuthContext);
+        
+        const {createUser}  = useContext(AuthContext);
     const handleRegister = e =>{
         e.preventDefault();
         
@@ -16,13 +19,21 @@ const SignUp = () => {
         const email = form.get('email');
         const password = form.get('password');
         console.log(fullName, photoUrl, email, password);
-        // createUser(email, password)
-        // .then(result =>{
-        //     console.log(result.user);
-        // })
-        // .catch(error =>{
-        //     console.error(error);
-        // });
+        createUser(email, password)
+        .then(result =>{
+            console.log(result.user);
+            if(result.success){
+                Swal.fire(
+                            "Success!",
+                            "User Created Success",
+                            "success"
+                     )
+            }
+
+        })
+        .catch(error =>{
+            console.error(error);
+        });
     }
     return (
         <div>

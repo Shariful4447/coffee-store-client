@@ -1,29 +1,32 @@
+import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import AuthProviders from "../Providers/AuthProviders";
 
 
 
 const Login = () => {
-    // const { signIn } = useContext();
-    // const location = useLocation();
-    // const navigate = useNavigate();
-    // const handleLogin = e =>{
-    //     e.preventDefault();
-    //     const form = new FormData(e.currentTarget)
-    //     const email = form.get('email');
-    //     const password = form.get('password');
-    //     console.log(email, password);
-    //     signIn(email, password)
-    //         .then(result =>{
-    //             console.log(result);
-    //             //navigate after login
-    //             navigate(location?.state ? location.state : '/')
-    //         })
-    //         .catch(err =>{
-    //             console.log(err);
-    //         })
+    const {signIn} = useContext(AuthProviders)
+    
+    const location = useLocation();
+    const navigate = useNavigate();
+    const handleLogin = e =>{
+        e.preventDefault();
+        const form = new FormData(e.currentTarget)
+        const email = form.get('email');
+        const password = form.get('password');
+        console.log(email, password);
+        signIn(email, password)
+            .then(result =>{
+                console.log(result);
+                //navigate after login
+                navigate(location?.state ? location.state : '/')
+            })
+            .catch(err =>{
+                console.log(err);
+            })
 
       
-    // }
+    }
     return (
         <div>
             
@@ -33,7 +36,7 @@ const Login = () => {
                     <div>
                         <h2>Please login</h2>
                     </div>
-                    <form  className="card-body">
+                    <form onSubmit={handleLogin}  className="card-body">
                         <div className="form-control">
                         <label className="label">
                             <span className="label-text">Email</span>
