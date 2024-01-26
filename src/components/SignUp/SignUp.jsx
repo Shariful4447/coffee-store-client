@@ -6,24 +6,24 @@ import { Link } from "react-router-dom";
 // import { useContext } from "react";
 const SignUp = () => {
     
-    //     const {createUser} = useContext(AuthContext);
-    // const handleRegister = e =>{
-    //     e.preventDefault();
-    //     e.preventDefault();
-    //     const form = new FormData(e.currentTarget)
-    //     const fullName = form.get('fullName');
-    //     const photoUrl = form.get('photoUrl');
-    //     const email = form.get('email');
-    //     const password = form.get('password');
-    //     console.log(fullName, photoUrl, email, password);
-    //     createUser(email, password)
-    //     .then(result =>{
-    //         console.log(result.user);
-    //     })
-    //     .catch(error =>{
-    //         console.error(error);
-    //     });
-    // }
+        // const {createUser} = useContext(AuthContext);
+    const handleRegister = e =>{
+        e.preventDefault();
+        
+        const form = new FormData(e.currentTarget)
+        const fullName = form.get('fullName');
+        const photoUrl = form.get('photoUrl');
+        const email = form.get('email');
+        const password = form.get('password');
+        console.log(fullName, photoUrl, email, password);
+        // createUser(email, password)
+        // .then(result =>{
+        //     console.log(result.user);
+        // })
+        // .catch(error =>{
+        //     console.error(error);
+        // });
+    }
     return (
         <div>
            
@@ -33,7 +33,7 @@ const SignUp = () => {
                     <div>
                         <h2>Please Register</h2>
                     </div>
-                    <form className="card-body">
+                    <form onSubmit={handleRegister} className="card-body">
                         <div className="form-control">
                         <label className="label">
                             <span className="label-text">Full Name</span>
