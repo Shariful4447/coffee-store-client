@@ -1,5 +1,5 @@
 export const json = {
-    "title": "Expert feedback",
+    "title": "Expert Feedback",
     "logoPosition": "right",
     "pages": [
      {
@@ -93,126 +93,46 @@ export const json = {
              "title": "Is Dark Pattern Present in the Given link ?"
             },
             {
-             "type": "text",
-             "name": "number-of-patterns",
+             "type": "boolean",
+             "name": "1. Countdown",
              "visibleIf": "{expert-findings} = true",
-             "title": "How many?"
-            }
+
+            },
+            {
+                "type": "boolean",
+                "name": "2. Scarcity",
+                "visibleIf": "{expert-findings} = true",
+   
+               },
+               {
+                "type": "boolean",
+                "name": "3. Forced Countinuty",
+                "visibleIf": "{expert-findings} = true",
+   
+               },
+               {
+                "type": "boolean",
+                "name": "4. Social proof",
+                "visibleIf": "{expert-findings} = true",
+   
+               }
            ],
          },
-         {
-          "type": "panel",
-          "name": "personal-info",
-          "elements": [
-           {
-            "type": "dropdown",
-            "name": "education",
-            "title": "What is your highest level of education completed?",
-            "choices": [
-             {
-              "value": "high-school",
-              "text": "High School"
-             },
-             {
-              "value": "trade-school",
-              "text": "Trade School"
-             },
-             {
-              "value": "college",
-              "text": "College"
-             },
-             {
-              "value": "post-graduate",
-              "text": "Post-graduate degree(s)"
-             }
-            ]
-           },
-           {
-            "type": "dropdown",
-            "name": "marital-status",
-            "title": "What is your marital status?",
-            "choices": [
-             {
-              "value": "married",
-              "text": "Married"
-             },
-             {
-              "value": "partnership",
-              "text": "Partnership"
-             },
-             {
-              "value": "divorced",
-              "text": "Divorced"
-             },
-             {
-              "value": "separated",
-              "text": "Separated"
-             },
-             {
-              "value": "single",
-              "text": "Single"
-             },
-             {
-              "value": "widow",
-              "text": "Widow(er)"
-             }
-            ]
-           },
 
-          ]
-         },
          {
           "type": "panel",
-          "name": "employment-exercises-children",
+          "name": "expert opinion",
           "elements": [
-           {
-            "type": "radiogroup",
-            "name": "employment",
-            "title": "Are you employed?",
-            "showCommentArea": true,
-            "commentText": "Type of work",
-            "choices": [
-             {
-              "value": "yes",
-              "text": "Yes"
-             },
-             {
-              "value": "no",
-              "text": "No"
-             },
-             {
-              "value": "retired",
-              "text": "Retired"
-             }
-            ],
-            "colCount": 3
-           },
 
            {
             "type": "panel",
             "name": "children",
             "elements": [
              {
-              "type": "boolean",
+              "type": "text",
               "name": "have-children",
-              "title": "Do you have children?"
+              "title": "Please Write Your valuable opinion or Suggestion?"
              },
-             {
-              "type": "multipletext",
-              "name": "children-ages",
-              "visibleIf": "{have-children} = true",
-              "titleLocation": "hidden",
-              "items": [
-               {
-                "name": "children-number",
-                "title": "# of children"
-               },
-               {
-                "name": "ages",
-                "title": "Their ages"
-               }
-              ]
-             }
             ]
            }
           ],
@@ -221,7 +141,7 @@ export const json = {
         ]
        }
       ],
-      "title": "Social history"
+      "title": "Social History"
      },
     ],
     "showQuestionNumbers": "off"
