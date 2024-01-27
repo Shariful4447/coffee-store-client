@@ -1,93 +1,7 @@
 export const json = {
-    "title": "Patient Assessment Form",
+    "title": "Expert feedback",
     "logoPosition": "right",
     "pages": [
-     {
-      "name": "Patient information",
-      "elements": [
-       {
-        "type": "panel",
-        "name": "patient-information",
-        "elements": [
-         {
-          "type": "text",
-          "name": "first-name",
-          "title": "First name"
-         },
-         {
-          "type": "text",
-          "name": "last-name",
-          "startWithNewLine": false,
-          "title": "Last name"
-         },
-         {
-          "type": "text",
-          "name": "ssn",
-          "title": "Social Security number",
-          "requiredErrorText": "You SSN must be a 9-digit number.",
-          "validators": [
-           {
-            "type": "regex",
-            "text": "Your SSN must be a 9-digit number",
-            "regex": "^(?!0{3})(?!6{3})[0-8]\\d{2}-?(?!0{2})\\d{2}-?(?!0{4})\\d{4}$"
-           }
-          ],
-          "maxLength": 9
-         },
-         {
-          "type": "text",
-          "name": "birthdate",
-          "startWithNewLine": false,
-          "title": "Date of birth",
-          "inputType": "date",
-          "maxValueExpression": "today()"
-         },
-         {
-          "type": "text",
-          "name": "concerns",
-          "title": "List any concerns you want to talk about during your visit"
-         }
-        ]
-       }
-      ],
-      "title": "Patient information"
-     },
-     {
-      "name": "Health history",
-      "elements": [
-       {
-        "type": "panel",
-        "name": "health-history",
-        "elements": [
-         {
-          "type": "boolean",
-          "name": "diabetes",
-          "startWithNewLine": false,
-          "title": "Do you have diabetes?"
-         },
-         {
-          "type": "boolean",
-          "name": "high-blood-pressure",
-          "startWithNewLine": false,
-          "title": "High blood pressure?"
-         },
-         {
-          "type": "boolean",
-          "name": "high-cholesterol",
-          "startWithNewLine": false,
-          "title": "High cholesterol?"
-         },
-         {
-          "type": "comment",
-          "name": "other-health-conditions",
-          "title": "Do you have other health conditions?",
-          "maxLength": 300
-         }
-        ]
-       }
-      ],
-      "title": "Health history"
-     },
      {
       "name": "Social history",
       "elements": [
@@ -97,35 +11,35 @@ export const json = {
         "elements": [
          {
           "type": "panel",
-          "name": "smoking",
+          "name": "Automatic Detection result",
           "elements": [
            {
-            "type": "radiogroup",
-            "name": "cigarettes",
-            "title": "Do you smoke cigarettes?",
-            "choices": [
-             {
-              "value": "never",
-              "text": "Never"
-             },
-             {
-              "value": "yes",
-              "text": "Yes"
-             },
-             {
-              "value": "quit",
-              "text": "Quit"
-             }
-            ]
-           },
-           {
             "type": "text",
-            "name": "packs-a-day",
-            "visibleIf": "{cigarettes} = 'yes'",
-            "title": "How many packs a day?",
-            "inputType": "number",
-            "min": 0
+            "name": "Request Details",
+            "title": "Request Details",
+            // "choices": [
+            //  {
+            //   "value": "never",
+            //   "text": "Never"
+            //  },
+            //  {
+            //   "value": "yes",
+            //   "text": "Yes"
+            //  },
+            //  {
+            //   "value": "quit",
+            //   "text": "Quit"
+            //  }
+            // ]
            },
+        //    {
+        //     "type": "text",
+        //     "name": "packs-a-day",
+        //     "visibleIf": "{cigarettes} = 'yes'",
+        //     "title": "How many packs a day?",
+        //     "inputType": "number",
+        //     "min": 0
+        //    },
            {
             "type": "panel",
             "name": "smoking-history",
@@ -149,21 +63,16 @@ export const json = {
             ],
             "visibleIf": "{cigarettes} = 'quit'"
            },
-           {
-            "type": "boolean",
-            "name": "vape",
-            "title": "Do you vape (e-cigarettes)?"
-           }
           ]
          },
          {
           "type": "panel",
-          "name": "alcohol-use-history",
+          "name": "Automatic Detection result",
           "elements": [
            {
             "type": "boolean",
             "name": "alcohol",
-            "title": "Do you drink alcohol?"
+            "title": "Our Automated Findings"
            },
            {
             "type": "text",
@@ -176,45 +85,20 @@ export const json = {
          },
          {
           "type": "panel",
-          "name": "drug-use-history",
+          "name": "expert-findings",
           "elements": [
-           {
-            "type": "checkbox",
-            "name": "recreational-drugs",
-            "title": "Do you use recreational drugs?",
-            "choices": [
-             {
-              "value": "rarely",
-              "text": "Rarely"
-             },
-             {
-              "value": "marijuana",
-              "text": "Marijuana"
-             },
-             {
-              "value": "cocaine",
-              "text": "Cocaine"
-             },
-             {
-              "value": "opioids",
-              "text": "Opioids"
-             }
-            ],
-            "showOtherItem": true,
-            "showNoneItem": true,
-            "otherPlaceholder": "Please specify... ",
-            "noneText": "Never",
-            "otherText": "Other",
-            "colCount": 3
-           },
-           {
-            "type": "text",
-            "name": "drug-use-times-per-month",
-            "visibleIf": "{recreational-drugs} anyof ['rarely', 'marijuana', 'cocaine', 'opioids', 'other']",
-            "title": "How many times per month",
-            "description": "If you take different types of drugs, please specify the frequency of use for each in a 'drug - # times/month' format."
-           }
-          ]
+            {
+             "type": "boolean",
+             "name": "expert-findings",
+             "title": "Is Dark Pattern Present in the Given link ?"
+            },
+            {
+             "type": "text",
+             "name": "number-of-patterns",
+             "visibleIf": "{expert-findings} = true",
+             "title": "How many?"
+            }
+           ],
          },
          {
           "type": "panel",
@@ -274,61 +158,7 @@ export const json = {
              }
             ]
            },
-           {
-            "type": "panel",
-            "name": "sexual-life",
-            "elements": [
-             {
-              "type": "boolean",
-              "name": "sexually-active",
-              "title": "Are you sexually active?"
-             },
-             {
-              "type": "text",
-              "name": "sexual-partners-number",
-              "title": "How many sexual partners do you have?",
-              "inputType": "number",
-              "min": 0
-             },
-             {
-              "type": "radiogroup",
-              "name": "sexual-partners-gender",
-              "titleLocation": "hidden",
-              "choices": [
-               {
-                "value": "men",
-                "text": "Men"
-               },
-               {
-                "value": "women",
-                "text": "Women"
-               },
-               {
-                "value": "both",
-                "text": "Both"
-               }
-              ],
-              "colCount": 3
-             },
-             {
-              "type": "radiogroup",
-              "name": "contraception",
-              "title": "Do you use contraception?",
-              "showCommentArea": true,
-              "commentText": "If yes, what method?",
-              "choices": [
-               {
-                "value": "yes",
-                "text": "Yes"
-               },
-               {
-                "value": "no",
-                "text": "No"
-               }
-              ]
-             }
-            ]
-           }
+
           ]
          },
          {
@@ -357,48 +187,7 @@ export const json = {
             ],
             "colCount": 3
            },
-           {
-            "type": "panel",
-            "name": "physical-activity",
-            "elements": [
-             {
-              "type": "radiogroup",
-              "name": "do-exercise",
-              "title": "Do you exercise?",
-              "choices": [
-               {
-                "value": "yes",
-                "text": "Yes"
-               },
-               {
-                "value": "no",
-                "text": "No"
-               }
-              ],
-              "colCount": 2
-             },
-             {
-              "type": "multipletext",
-              "name": "activities",
-              "visibleIf": "{do-exercise} = 'yes'",
-              "titleLocation": "hidden",
-              "items": [
-               {
-                "name": "activity-type",
-                "title": "Type of activity"
-               },
-               {
-                "name": "activity-frequency",
-                "title": "How often"
-               },
-               {
-                "name": "activity-duration",
-                "title": "How long per activity"
-               }
-              ]
-             }
-            ]
-           },
+
            {
             "type": "panel",
             "name": "children",
@@ -434,263 +223,6 @@ export const json = {
       ],
       "title": "Social history"
      },
-     {
-      "name": "Surgical history / recent hospitalizations",
-      "elements": [
-       {
-        "type": "comment",
-        "name": "surgery-description",
-        "title": "Date and type of surgery / procedure"
-       }
-      ],
-      "title": "Surgical history / recent hospitalizations"
-     },
-     {
-      "name": "Family history",
-      "elements": [
-       {
-        "type": "matrixdynamic",
-        "name": "family-history",
-        "titleLocation": "hidden",
-        "columns": [
-         {
-          "name": "relation",
-          "title": "Relation"
-         },
-         {
-          "name": "health-conditions",
-          "title": "Health conditions"
-         },
-         {
-          "name": "cancer-history",
-          "title": "Family history of cancer"
-         }
-        ],
-        "cellType": "text"
-       }
-      ],
-      "title": "Family history"
-     },
-     {
-      "name": "Preventive care",
-      "elements": [
-       {
-        "type": "panel",
-        "name": "preventive-care",
-        "elements": [
-         {
-          "type": "panel",
-          "name": "recent-shots-panel",
-          "elements": [
-           {
-            "type": "matrixdropdown",
-            "name": "recent-shots",
-            "title": "Recent shots from a doctor or pharmacist",
-            "columns": [
-             {
-              "name": "date",
-              "title": "Date"
-             },
-             {
-              "name": "place",
-              "title": "Place"
-             }
-            ],
-            "cellType": "text",
-            "rows": [
-             {
-              "value": "flu",
-              "text": "Flu"
-             },
-             {
-              "value": "shingles",
-              "text": "Shingles"
-             },
-             {
-              "value": "pneumonia",
-              "text": "Pneumonia"
-             },
-             {
-              "value": "tetanus",
-              "text": "Tetanus"
-             },
-             {
-              "value": "other",
-              "text": "Other"
-             }
-            ]
-           }
-          ]
-         },
-         {
-          "type": "panel",
-          "name": "recent-tests-panel",
-          "elements": [
-           {
-            "type": "matrixdropdown",
-            "name": "recent-tests",
-            "title": "Recent tests or procedures",
-            "columns": [
-             {
-              "name": "date",
-              "title": "Date"
-             },
-             {
-              "name": "place",
-              "title": "Place"
-             }
-            ],
-            "cellType": "text",
-            "rows": [
-             {
-              "value": "colonoscopy",
-              "text": "Colonoscopy"
-             },
-             {
-              "value": "cologuard",
-              "text": "Cologuard"
-             },
-             {
-              "value": "mammogram",
-              "text": "Mammogram"
-             },
-             {
-              "value": "pap",
-              "text": "PAP"
-             },
-             {
-              "value": "other",
-              "text": "Other"
-             }
-            ]
-           }
-          ],
-          "startWithNewLine": false
-         },
-         {
-          "type": "panel",
-          "name": "specialists-panel",
-          "elements": [
-           {
-            "type": "matrixdynamic",
-            "name": "specialists",
-            "title": "Specialists",
-            "columns": [
-             {
-              "name": "provider",
-              "title": "Provider's first and last name"
-             },
-             {
-              "name": "speciality",
-              "title": "Speciality"
-             },
-             {
-              "name": "city",
-              "title": "Town/City"
-             }
-            ],
-            "cellType": "text",
-            "rowCount": 1
-           }
-          ]
-         },
-         {
-          "type": "panel",
-          "name": "medications-and-allergies",
-          "elements": [
-           {
-            "type": "multipletext",
-            "name": "medications",
-            "title": "Medications",
-            "items": [
-             {
-              "name": "medication-name",
-              "title": "Name"
-             },
-             {
-              "name": "medication-dose",
-              "title": "Dose"
-             },
-             {
-              "name": "medication-times-per-day",
-              "title": "Times per day"
-             }
-            ]
-           },
-           {
-            "type": "multipletext",
-            "name": "allergies",
-            "startWithNewLine": false,
-            "title": "Allergies",
-            "items": [
-             {
-              "name": "allergy-type",
-              "title": "Type"
-             },
-             {
-              "name": "allergy-reaction",
-              "title": "Reaction"
-             }
-            ]
-           }
-          ]
-         }
-        ]
-       }
-      ],
-      "title": "Preventive care"
-     },
-     {
-      "name": "Symptoms",
-      "elements": [
-       {
-        "type": "tagbox",
-        "name": "symptoms",
-        "title": "Please select any symptoms you have now or have had in the past month.",
-        "choices": [
-         "Fever",
-         "Chills",
-         "Feeling poorly",
-         "Feeling tired",
-         "Weight gain",
-         "Weight loss",
-         "Chest pain",
-         "Heart pounding",
-         "Fast pulse",
-         "Slow pulse",
-         "Leg pain with exercise",
-         "Leg swelling",
-         "Joint pain",
-         "Neck pain",
-         "Joint swelling",
-         "Joint stiffness",
-         "Muscle aches",
-         "Back pain",
-         "Sores",
-         "Rash",
-         "Itching",
-         "Change in a mole",
-         "Unusual growth/spot"
-        ]
-       },
-       {
-        "type": "signaturepad",
-        "name": "signature",
-        "title": "Signature:",
-        "titleLocation": "left"
-       },
-       {
-        "type": "text",
-        "name": "current-date",
-        "startWithNewLine": false,
-        "title": "Today's date:",
-        "titleLocation": "left",
-        "defaultValueExpression": "today()",
-        "inputType": "date"
-       }
-      ],
-      "title": "Symptoms"
-     }
     ],
     "showQuestionNumbers": "off"
    };
