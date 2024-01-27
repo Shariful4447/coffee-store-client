@@ -14,6 +14,8 @@ import UpdateCoffee from './components/UpdateCoffee/UpdateCoffee.jsx'
 import Login from './components/Login/Login.jsx'
 import SignUp from './components/SignUp/SignUp.jsx'
 import AuthProviders from './components/Providers/AuthProviders.jsx'
+import Users from './components/Users/Users.jsx'
+import UserOpinion from './components/UserOpinion/UserOpinion.jsx'
 
  const router = createBrowserRouter([
   {
@@ -54,6 +56,18 @@ import AuthProviders from './components/Providers/AuthProviders.jsx'
     element: <UpdateCoffee/>,
     loader : ({params}) =>fetch(`http://localhost:3000/coffee/${params.id}`)
   },
+
+  {
+    path: "user",
+    element: <Users></Users>,
+    loader : () =>fetch('http://localhost:3000/user')
+  },
+  {
+    path: "user-opinion",
+    element:<UserOpinion></UserOpinion>,
+    
+  }
+
   
  ]);
  
