@@ -15,13 +15,12 @@ import Login from './components/Login/Login.jsx'
 import SignUp from './components/SignUp/SignUp.jsx'
 import AuthProviders from './components/Providers/AuthProviders.jsx'
 import Users from './components/Users/Users.jsx'
-import UserOpinion from './components/UserOpinion/UserOpinion.jsx'
 
  const router = createBrowserRouter([
   {
     path: "/",
     element: <App/>,
-    loader : () =>fetch('http://localhost:3000/coffee')
+    loader : () =>fetch('http://localhost:8000/coffee')
     // children: [
     //   {
     //     path: "Home",
@@ -61,12 +60,8 @@ import UserOpinion from './components/UserOpinion/UserOpinion.jsx'
     path: "user",
     element: <Users></Users>,
     loader : () =>fetch('http://localhost:3000/user')
-  },
-  {
-    path: "user-opinion",
-    element:<UserOpinion></UserOpinion>,
-    
   }
+  
 
   
  ]);
