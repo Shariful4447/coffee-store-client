@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProviders";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 
 const SignUp = () => {
@@ -24,25 +25,40 @@ const SignUp = () => {
             console.log(result.user);
 
             const user = {fullName, email, password}
-            fetch('http://localhost:3000/user', {
-                method: 'POST',
-                headers: {
-                    'content-type' : 'application/json',
-                },
-                body: JSON.stringify(user)
-            })
-            .then(res =>res.json())
+            // using axios
+            axios.post('http://localhost:8000/user', user)
             .then(data => {
-                console.log(data);
-                 if(data.insertedId){
-                    Swal.fire(
-                        "Success!",
-                        "User Created Success",
-                        "success"
-                 )
-    
-                }
+                console.log(data.data);
+                if(data.data.insertedId){
+                            Swal.fire(
+                                "Success!",
+                                "User Created Success",
+                                "success"
+                         )
+            
+                        }
             })
+
+            // // using fetch
+            // fetch('http://localhost:3000/user', {
+            //     method: 'POST',
+            //     headers: {
+            //         'content-type' : 'application/json',
+            //     },
+            //     body: JSON.stringify(user)
+            // })
+            // .then(res =>res.json())
+            // .then(data => {
+            //     console.log(data);
+            //      if(data.insertedId){
+            //         Swal.fire(
+            //             "Success!",
+            //             "User Created Success",
+            //             "success"
+            //      )
+    
+            //     }
+            // })
             
                 
             
