@@ -15,6 +15,7 @@ import Login from './components/Login/Login.jsx'
 import SignUp from './components/SignUp/SignUp.jsx'
 import AuthProviders from './components/Providers/AuthProviders.jsx'
 import Users from './components/Users/Users.jsx'
+import Snacks from './components/Snacks/Snacks.jsx'
 
  const router = createBrowserRouter([
   {
@@ -37,6 +38,11 @@ import Users from './components/Users/Users.jsx'
     element: <AddCoffee/>,
   },
   {
+    path: "snacks",
+    element: <Snacks/>,
+    loader : () =>fetch('http://localhost:8000/coffee')
+  },
+  {
     path: "login",
     element: <Login/>,
   },
@@ -53,13 +59,13 @@ import Users from './components/Users/Users.jsx'
   {
     path: "updateCoffee/:id",
     element: <UpdateCoffee/>,
-    loader : ({params}) =>fetch(`http://localhost:3000/coffee/${params.id}`)
+    loader : ({params}) =>fetch(`http://localhost:8000/coffee/${params.id}`)
   },
 
   {
     path: "user",
     element: <Users></Users>,
-    loader : () =>fetch('http://localhost:3000/user')
+    loader : () =>fetch('http://localhost:8000/user')
   }
   
 

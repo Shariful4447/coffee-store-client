@@ -87,7 +87,7 @@ const DataTable = () => {
     const [tableData, setTableData] = useState([])
 
     useEffect(() => {
-        fetch("http://localhost:3000/user")
+        fetch("http://localhost:8000/user")
           .then((data) => data.json())
           .then((data) => setTableData(data))
 
