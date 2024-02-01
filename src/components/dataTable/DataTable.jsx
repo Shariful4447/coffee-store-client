@@ -8,6 +8,7 @@ import { Select } from 'antd';
 import { useState, useEffect } from 'react'
 
 
+
 const renderDetailsButton = (params) => {
       
         const handleChange = (value) => {
@@ -89,7 +90,10 @@ const DataTable = () => {
     useEffect(() => {
         fetch("http://localhost:8000/user")
           .then((data) => data.json())
-          .then((data) => setTableData(data))
+          .then((data) => {
+            setTableData(data)
+            console.log(data);
+          });
 
     
       }, [])
